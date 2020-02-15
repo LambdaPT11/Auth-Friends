@@ -1,7 +1,8 @@
 import React from 'react';
-
+import axios from 'axios';
 import './login.styles.css';
-import { axiosWithAuth } from './../axios-w-auth/Axios-wi-auth';
+
+//import { axiosWithAuth } from '../axios-w-auth/Axios-wi-auth';
 
 class LoginForm extends React.Component {
 
@@ -25,9 +26,12 @@ class LoginForm extends React.Component {
     login = (e) => {
         e.preventDefault();
         console.log(this.state);
-        axiosWithAuth()
+        axios
             .post('http://localhost:5000/api/login', this.state.credentials)
-            .then(res => console.log(res))
+            .then(res => {
+                localStorage.setItem('token', res.data.payload);
+                this.props.history.push('/friends');
+            })
             .catch(err => console.error('axios: ', err));
     }
 
