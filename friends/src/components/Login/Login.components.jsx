@@ -1,29 +1,65 @@
 import React from 'react';
+
 import './login.styles.css';
+import { axiosWithAuth } from './../axios-w-auth/Axios-wi-auth';
 
-const LoginForm = () => {
+class LoginForm extends React.Component {
+
+    state = {
+        credentials: {
+            username: "",
+            password: ""
+        }
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            credentials: {
+                ...this.state.credentials,
+                [e.target.name]: e.target.value
+            }
+            
+        });
+    };
+
+    login = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+        axiosWithAuth()
+            .post('http://localhost:5000/api/login', this.state.credentials)
+            .then(res => console.log(res))
+            .catch(err => console.error('axios: ', err));
+    }
+
+render() {
     return(
-        <form className="login-form">
+        <form onSubmit={this.login} className="login-form">
 
-            <label className="user-name-label" htmlFor="user-name" >
+            <label className="user-name-label" htmlFor="username" >
             User Name
                 <input placeholder="User Name" 
-                    className="name-input"
-                    name="user-name" 
+                    value={this.state.credentials.username}
+                    onChange={this.handleChange} 
+                    className="name-input" 
+                    name="username" 
+                    autoComplete='off'
                     type="text" ></input>
             </label>
 
-            <label className="user-password-label" htmlFor="user-password">
+            <label className="user-password-label" htmlFor="password">
             User Password
                 <input placeholder="User Password" 
+                    value={this.state.credentials.password}
+                    onChange={this.handleChange}
                     className="password-input" 
-                    name="user-password"
+                    name="password" 
+                    autoComplete='off'
                     type="password" ></input>
             </label>
 
-            <button>Submit</button>
+            <button>Log In</button>
         </form>
-    )
+    )}
 }
 
 export default LoginForm;
