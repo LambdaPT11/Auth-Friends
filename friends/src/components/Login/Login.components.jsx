@@ -9,7 +9,8 @@ class LoginForm extends React.Component {
     state = {
         credentials: {
             username: "",
-            password: ""
+            password: "",
+            //loggedin: false
         }
     }
 
@@ -25,14 +26,17 @@ class LoginForm extends React.Component {
 
     login = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        
         axios
             .post('http://localhost:5000/api/login', this.state.credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.payload);
+                //this.setState({...this.state, loggedin: true});
+                localStorage.setItem('loggedin', true);
                 this.props.history.push('/friends');
             })
             .catch(err => console.error('axios: ', err));
+            console.log(this.state);
     }
 
 render() {
