@@ -1,6 +1,32 @@
-h4 {
+.name {
     color: #333;
+    background-color: aliceblue;
     padding: 0px;
+    margin: .3rem 0;
+    padding-left: .5rem;
+}
+
+input,
+.name {
+    font-weight: bold;
+    font-size: 105%;
+    color: #333;
+}
+
+.info {
+    align-self: flex-start;
+    background-color: aliceblue;
+    font-size: 105%;
+    font-weight: 500;
+    padding: 0;
+    margin: .3rem 0;
+    padding-left: .5rem;
+}
+
+input {
+    border: none;
+    padding: 1rem;
+    font-size: large;
 }
 
 .wrapper {
@@ -8,10 +34,25 @@ h4 {
 }
 
 .card {
-
-    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: aliceblue;
     border-radius: 5px;
-    width: 250px;
+    width: 350px;
+    height: 200px;
     margin: 1rem;
     color: #333;
+}
+
+.btn-wrapper {
+    display: flex;
+    margin-top: 3%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.ebtn {
+    margin: auto;
 }

@@ -6,7 +6,7 @@ import LoginForm from './components/Login/Login.components';
 import Friends from './components/friends/Friends.component';
 import AddForm from './components/addForm/AddForm.component';
 import ReadMe from './components/readme/ReadMe.component';
-import Navbar from './components/Navbar/Navbar.component';
+import Navbar from './components/Navbar/Nav.component';
 import PrivateRoute from './components/private-route/Private-Route.component';
 
 

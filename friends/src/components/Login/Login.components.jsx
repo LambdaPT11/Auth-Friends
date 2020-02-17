@@ -2,39 +2,42 @@ import React from 'react';
 import axios from 'axios';
 import './login.styles.css';
 
-//import { axiosWithAuth } from '../axios-w-auth/Axios-wi-auth';
-
+// Traditional class component
 class LoginForm extends React.Component {
 
+    // Component state
     state = {
         credentials: {
             username: "",
             password: "",
-            //loggedin: false
         }
     }
 
+    // handles form inputs
     handleChange = (e) => {
         this.setState({
             credentials: {
                 ...this.state.credentials,
                 [e.target.name]: e.target.value
             }
-            
         });
     };
 
+    // loggin function - 1st prevent any default action
     login = (e) => {
         e.preventDefault();
         
         axios
+            // axios call to login end point to get auth token
             .post('http://localhost:5000/api/login', this.state.credentials)
             .then(res => {
+                // Set token in local storage - console.log(res) to see object
                 localStorage.setItem('token', res.data.payload);
-                //this.setState({...this.state, loggedin: true});
-                localStorage.setItem('loggedin', true);
+                // Set boolean logIn to true and put in local storage
+                localStorage.setItem('logIn', true);
+                // Redirect to friends list through browser history
                 this.props.history.push('/friends');
-            })
+            })  // catch any error from axios call
             .catch(err => console.error('axios: ', err));
             console.log(this.state);
     }

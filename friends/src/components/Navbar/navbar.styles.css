@@ -52,14 +52,24 @@ ul {
   display: flex;
   padding-right: 1em;
   justify-content: space-evenly;
+  justify-content: flex-end;
 }
 
 li {
   color: white;
+  margin: 0 1rem;
 
 }
 
 li a {
   color: white;
   text-decoration: none;
+}
+
+.l-in {
+  display: block;
+}
+
+.l-out {
+  display: none;
 }
