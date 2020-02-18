@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from './../axios-w-auth/Axios-wi-auth';
+import './addform.styles.css';
 
 const AddForm = (props) => {
 
@@ -30,14 +31,15 @@ const AddForm = (props) => {
 
         return(
             <>
-                <form onSubmit={submitForm} className="add-form">
+                <form onSubmit={submitForm} className="add-form" autoComplete="off">
                     <label className="label-name" htmlFor="name">
                     Full Name
                         <input placeholder="Full Name" 
                             type="text" 
                             name="name" 
                             value={friend.name} 
-                            onChange={handleChange} />
+                            onChange={handleChange}
+                            autoComplete="Full-Name" />
                             
                     </label>
 
@@ -47,7 +49,8 @@ const AddForm = (props) => {
                             type="text"
                             name="age"
                             value={friend.age} 
-                            onChange={handleChange} />
+                            onChange={handleChange}
+                            autoComplete="Friend-Age" />
                             
                     </label>
                     <label className="label-email" htmlFor="email">
@@ -56,7 +59,8 @@ const AddForm = (props) => {
                             type="text"
                             name="email"
                             value={friend.email} 
-                            onChange={handleChange} />
+                            onChange={handleChange}
+                            autoComplete="Friend-Email" />
                             
                     </label>
                     <input className="submit" type="submit" value="Save" />

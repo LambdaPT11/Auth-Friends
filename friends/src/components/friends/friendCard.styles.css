@@ -1,16 +1,11 @@
 .name {
     color: #333;
     background-color: aliceblue;
+    font-weight: bold;
+    font-size: 105%;
     padding: 0px;
     margin: .3rem 0;
     padding-left: .5rem;
-}
-
-input,
-.name {
-    font-weight: bold;
-    font-size: 105%;
-    color: #333;
 }
 
 .info {
@@ -25,8 +20,6 @@ input,
 
 input {
     border: none;
-    padding: 1rem;
-    font-size: large;
 }
 
 .wrapper {
